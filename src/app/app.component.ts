@@ -11,6 +11,9 @@ export class AppComponent {
   listUsers : any[] = []
   newNameUser: string =""
 
+  userName : string = ""
+  userId : string = ""
+
   constructor(private usersServe : UsersService) {
       
     this.usersServe.getAllUsers().subscribe((datas :any) => {
@@ -22,14 +25,19 @@ export class AppComponent {
 
   saveNewUser()
   {
-    this.usersServe.createNewUser(this.newNameUser).subscribe((datas :any) => {
-
-      if(datas.message == "success")
+    this.usersServe.createNewUser(this.newNameUser, this.userName, this.userId).subscribe({
+      next : (datas : any) => {
+        if(datas.message == "success")
         this.usersServe.getAllUsers().subscribe((datas :any) =>  {
             this.listUsers = datas
             this.newNameUser = ""
         })
+      },
+      error : (err) => {
+        alert(err.error.message)
+      },
     })
+      
   }
 
 }

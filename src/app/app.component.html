@@ -18,9 +18,12 @@
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <span class="card-title">Card Title</span>
-          <input type="text" [(ngModel)]="newNameUser">
-          <button [disabled]="!newNameUser" class="btn btn-success" (click)="saveNewUser()">Envoyer le user</button>
+          <span class="card-title">Partie admin créer un user</span>
+          <label for="">Votre User Name</label><input [(ngModel)]="userName"type="password" name="userName">
+          <label for="">Votre User ID</label><input [(ngModel)]="userId" type="password" name="userId">
+          <hr>
+          <input placeholder="Nom du nouvel user" type="text" [(ngModel)]="newNameUser">
+          <button [disabled]="!newNameUser || !userName || !userId" class="btn btn-success" (click)="saveNewUser()">Envoyer le new user</button>
         </div>
       
       </div>
