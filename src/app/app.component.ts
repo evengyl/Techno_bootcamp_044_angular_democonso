@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersService } from './users.service';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,15 +12,19 @@ export class AppComponent {
   listUsers : any[] = []
   newNameUser: string =""
 
-  userName : string = ""
-  userId : string = ""
+  userName : string = "evengyl"
+  userId : string = "66"
 
-  constructor(private usersServe : UsersService) {
+  constructor(private usersServe : UsersService, private authServe : AuthService) {
       
     this.usersServe.getAllUsers().subscribe((datas :any) => {
         this.listUsers = datas
     })
 
+  }
+
+  authenticate(){
+    this.authServe.auth(this.userName, this.userId)
   }
 
 
