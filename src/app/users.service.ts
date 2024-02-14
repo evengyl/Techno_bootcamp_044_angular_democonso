@@ -17,10 +17,11 @@ export class UsersService {
     }
 
 
-    createNewUser(newUserName : string, userName : string, userId : string) : Observable<any>
+    createNewUser(newUserName : string, newUserPassword : string) : Observable<any>
     {
         return this.httpC.post<any[]>(`${this.baseUrl}/users`, {
-            "name" : newUserName
+            "name" : newUserName,
+            "password" : newUserPassword
         })
     }
 }

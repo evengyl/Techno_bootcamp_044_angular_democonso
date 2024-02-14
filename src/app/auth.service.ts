@@ -10,11 +10,12 @@ export class AuthService {
 
     constructor(private httpC : HttpClient){}
 
-    auth(userName : string, userId : string)
+    auth(userName : string, password : string)
     {
         return this.httpC.post("http://localhost:3000/auth", {
-            userName, userId
+            userName, password
         }).subscribe((datas : any) => {
+            alert("OK connecté !!!")
             this.jwt_token = datas.token
         })
     }

@@ -7,7 +7,7 @@
         <div class="card-content white-text">
           <span class="card-title">Connexion</span>
           <label for="">Votre User Name</label><input [(ngModel)]="userName" type="text" name="userName">
-          <label for="">Votre User ID</label><input [(ngModel)]="userId" type="text" name="userId">
+          <label for="">Votre Password</label><input [(ngModel)]="password" type="text" name="password">
           <button class="btn" (click)="authenticate()">Connexion</button>
         </div>
       </div>
@@ -17,10 +17,11 @@
     <div class="col s12 m6">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <span class="card-title">Card Title</span>
+          <span class="card-title">List User</span>
           <p *ngFor="let user of listUsers">
-            {{ user.name}} - 
-            {{ user.id}}
+            {{ user.name }} - 
+            {{ user.id }} - 
+            {{ user.password }} - 
           </p>
           
         </div>
@@ -33,6 +34,7 @@
         <div class="card-content white-text">
           <span class="card-title">Partie admin créer un user</span>
           <input placeholder="Nom du nouvel user" type="text" [(ngModel)]="newNameUser">
+          <input placeholder="Password new user" type="text" [(ngModel)]="newUserPassword">
           <button [disabled]="!newNameUser" class="btn btn-success" (click)="saveNewUser()">Envoyer le new user</button>
         </div>
       

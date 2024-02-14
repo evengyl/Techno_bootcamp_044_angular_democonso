@@ -11,9 +11,10 @@ export class AppComponent {
 
   listUsers : any[] = []
   newNameUser: string =""
+  newUserPassword : string =""
 
   userName : string = "evengyl"
-  userId : string = "66"
+  password : string = "test1234"
 
   constructor(private usersServe : UsersService, private authServe : AuthService) {
       
@@ -24,13 +25,13 @@ export class AppComponent {
   }
 
   authenticate(){
-    this.authServe.auth(this.userName, this.userId)
+    this.authServe.auth(this.userName, this.password)
   }
 
 
   saveNewUser()
   {
-    this.usersServe.createNewUser(this.newNameUser, this.userName, this.userId).subscribe({
+    this.usersServe.createNewUser(this.newNameUser, this.newUserPassword).subscribe({
       next : (datas : any) => {
         if(datas.message == "success")
         this.usersServe.getAllUsers().subscribe((datas :any) =>  {
